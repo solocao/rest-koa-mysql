@@ -4,6 +4,7 @@ const Sequelize = require('sequelize');
 module.exports = new Sequelize('koa-sample-sandbox', 'root', 'root', {
     host: 'localhost',   // 数据库地址
     dialect: 'mysql',    // 指定连接的数据库类型
+    operatorsAliases: Sequelize.Op,
     pool: {
         max: 5,          // 连接池中最大连接数量
         min: 0,          // 连接池中最小连接数量

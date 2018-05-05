@@ -1,4 +1,4 @@
-const user = require('./user');
+const user = require('../models/user');
 
 // 添加用户
 user.addUser('saturn2', 'vmto@qq.com').then(() => {
