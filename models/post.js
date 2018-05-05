@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const sequelize = require('./db');
+const sequelize = require('../config/db');
 
 // 1.创建模型
 const Post = sequelize.define('post', {
@@ -19,8 +19,8 @@ const Post = sequelize.define('post', {
     type: Sequelize.STRING
   }
 }, {
-  freezeTableName: false
-});
+    freezeTableName: false
+  });
 
 // 2.创建表
 const post = Post.sync();
@@ -51,6 +51,6 @@ exports.findByPage = function (page, pageSize) {
 
   return Post.findAndCountAll({
     'limit': parseInt(pageSize),
-    'offset': (page - 1 ) * pageSize
+    'offset': (page - 1) * pageSize
   });
 };

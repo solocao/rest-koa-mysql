@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const sequelize = require('./db');
+const sequelize = require('../config/db');
 
 // 1.创建 model
 const User = sequelize.define('user', {
@@ -12,10 +12,10 @@ const User = sequelize.define('user', {
         type: Sequelize.STRING
     }
 }, {
-    // true 表名称和 model 相同: user
-    // false 创建表名称会是复数: users
-    freezeTableName: false
-});
+        // true 表名称和 model 相同: user
+        // false 创建表名称会是复数: users
+        freezeTableName: false
+    });
 
 // 2.创建表
 // User.sync()创建表并返回Promise对象
@@ -23,7 +23,7 @@ const User = sequelize.define('user', {
 const user = User.sync({ force: false });// 默认 forse=false
 
 // 3.添加新用户
-exports.addUser = function(userName, email) {
+exports.addUser = function (userName, email) {
     return User.create({
         userName: userName,
         email: email
@@ -31,11 +31,11 @@ exports.addUser = function(userName, email) {
 };
 
 // 4.通过用户名查找用户
-exports.findByName = function(userName) {
+exports.findByName = function (userName) {
     return User.findOne({ where: { userName: userName } });
 };
 
 // 5.通过用户名查找用户
-exports.findById = function(id) {
+exports.findById = function (id) {
     return User.findOne({ where: { id: id } });
 };

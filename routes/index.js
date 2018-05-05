@@ -1,14 +1,14 @@
 const router = require('koa-router')();
-const user = require('../bin/user');
-const post = require('../bin/post');
+const user = require('../models/user');
+const post = require('../models/post');
 
 router.get('/', async (ctx, next) => {
-    //   let oneUser = await user.findById(1);
-    //   let onePost = await post.findById(1);
+    let oneUser = await user.findById(1);
+    let onePost = await post.findById(1);
     await ctx.render('index', {
         title: 'hello index',
-        user: 'oneUser',
-        post: 'onePost'
+        user: oneUser,
+        post: onePost
     })
 });
 
