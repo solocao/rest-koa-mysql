@@ -8,6 +8,15 @@ router.get('/', async (ctx, next) => {
   ctx.body = { users: oneUser }
 });
 
+router.post('/', async (ctx, next) => {
+  let params = ctx.request.body;
+  const { userName, email } = params;
+  const data = await user.addUser(userName, email)
+  ctx.body = {
+    data: data,
+  };
+});
+
 router.get('/bar', function (ctx, next) {
   ctx.body = 'this is a users/bar response'
 });

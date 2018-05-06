@@ -22,7 +22,7 @@ const User = sequelize.define('user', {
 // 如果 force = true 则把存在的表（如果users表已存在）先销毁再创建表
 const user = User.sync({ force: false });// 默认 forse=false
 
-// 3.添加新用户
+// 添加新用户
 exports.addUser = function (userName, email) {
     return User.create({
         userName: userName,
@@ -30,12 +30,12 @@ exports.addUser = function (userName, email) {
     });
 };
 
-// 4.通过用户名查找用户
+// 通过用户名查找用户
 exports.findByName = function (userName) {
     return User.findOne({ where: { userName: userName } });
 };
 
-// 5.通过用户名查找用户
+// 通过用户id查找用户
 exports.findById = function (id) {
     return User.findOne({ where: { id: id } });
 };

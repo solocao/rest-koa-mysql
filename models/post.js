@@ -4,7 +4,10 @@ const sequelize = require('../config/db');
 // 1.创建模型
 const Post = sequelize.define('post', {
   title: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
+    validate: {
+      len: [1, 10]
+    }
   },
   content: {
     type: Sequelize.STRING
@@ -19,6 +22,7 @@ const Post = sequelize.define('post', {
     type: Sequelize.STRING
   }
 }, {
+    // 不允许sequelize修改列名为复数  
     freezeTableName: false
   });
 

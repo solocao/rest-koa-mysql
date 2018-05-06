@@ -17,6 +17,7 @@ onerror(app);
 app.use(bodyparser({
   enableTypes: ['json', 'form', 'text']
 }));
+
 app.use(json());
 app.use(logger());
 app.use(cors());  // 跨域
@@ -30,6 +31,7 @@ app.use(views(__dirname + '/views', {
 
 // logger 日志
 app.use(async (ctx, next) => {
+  console.log(ctx)
   const start = new Date();
   await next();
   const ms = new Date() - start;
